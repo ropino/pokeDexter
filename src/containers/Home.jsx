@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import "../App.css";
-import $ from "jquery";
-
 import SinglePokemon from "../components/SinglePokemon";
 import NoPokemon from "../components/NoPokemon";
 import Navbar from "../components/Navbar";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Paper, Button, TextField } from "@material-ui/core";
-import Fade from "@material-ui/core/Fade";
+import { Grid, Paper, Button, TextField, Fade } from "@material-ui/core";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,17 +31,16 @@ const Home = () => {
 
   const handleChange = (e) => {
     let val = e.target.value;
-    if (val){
-       setValue(val.toLowerCase())
-      } else {
-      setChecked(false)
+    if (val) {
+      setValue(val.toLowerCase());
+    } else {
+      setChecked(false);
       setValue("");
-      //setIsSearching(false);
+      setIsSearching(false);
     }
   };
 
   const handleSubmit = async (e) => {
-    setChecked(true);
     e.preventDefault();
     if (value) {
       await axios
@@ -64,19 +59,9 @@ const Home = () => {
         })
         .catch((err) => setPokemonExist(false));
       setIsSearching(true);
+      setChecked(true);
     }
   };
-
-  // $(document).on("keydown", function(e){
-  //   if(e.code === "Enter"){
-  //     console.log("EEE de jquery",e)
-  //     console.log("EEEEE CODE",e.code)
-  //     //e.preventDefault();
-  //     handleSubmit(e)
-  //     //return false
-  //   }
-  // })
- 
 
   return (
     <div>
@@ -111,15 +96,12 @@ const Home = () => {
           <Paper className={classes.paper} elevation={0}></Paper>
         </Grid>
       </Grid>
-
-       <Fade in={checked} appear={3000} enter={30000} exit={3000} >
+      <Fade in={checked} timeout={1500} appear={3000} enter={6000} exit={1000}>
         <div>
-        {isSearching &&
-          (pokemonExist ? <SinglePokemon poke={pokemon} /> : <NoPokemon />)}
-      </div>
-       </Fade> 
-      
-
+          {isSearching &&
+            (pokemonExist ? <SinglePokemon poke={pokemon} /> : <NoPokemon />)}
+        </div>
+      </Fade>
     </div>
   );
 };

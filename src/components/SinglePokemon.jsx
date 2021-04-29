@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-
-import "../App.css";
-import $ from "jquery";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Paper, Typography } from "@material-ui/core";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,22 +11,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     textAlign: "left",
     borderColor: "none",
-    listStyle: "none",
   },
   image: {
-    //flexDirection: "column",
-    //justifyContent: "center",
     textAlign: "right",
-    //verticalAlign: "middle",
-    //alignItems: "center",
-    //alignContent: "center",
   },
   text: {
     fontWeight: "lighter",
   },
 }));
-
-
 
 const SinglePokemon = (props) => {
   const pokemon = props.poke;
@@ -40,12 +28,14 @@ const SinglePokemon = (props) => {
     <div className={classes.root}>
       <Grid item xs={12}>
         <Typography
-          variant="h2"
-          component="h2"
+          variant="h3"
+          component="h3"
           style={{
             textAlign: "center",
             textTransform: "capitalize",
             marginTop: 20,
+            marginBottom: -20,
+            color: "blue"
           }}
         >
           {pokemon.name}
@@ -56,7 +46,7 @@ const SinglePokemon = (props) => {
               <div className={classes.image}>
                 <img
                   src={pokemon.img}
-                  alt="pokemon"
+                  alt="Pokemon image"
                   style={{ width: "250px", marginTop: 50 }}
                 />
               </div>
@@ -107,7 +97,6 @@ const SinglePokemon = (props) => {
                   variant="h5"
                   color="textSecondary"
                   component="h5"
-                  display="inline"
                 >
                   <span className={classes.text}>Experiencia base: </span>
                   {pokemon.baseExperience}

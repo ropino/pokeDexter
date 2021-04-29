@@ -1,9 +1,6 @@
 import React from "react";
 
-import "../App.css"
-import $ from "jquery";
-
-import { Grid, Paper, Button, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,18 +11,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     textAlign: "left",
     borderColor: "none",
-    listStyle: "none",
   },
   image: {
     flexDirection: "row",
-    //justifyContent: "center",
     textAlign: "center",
-    //verticalAlign: "middle",
-    //alignItems: "center",
-    //alignContent: "center",
     width: 600,
     marginLeft: 25,
-
   },
   text: {
     fontWeight: "lighter",
@@ -34,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NoPokemon = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <div>
@@ -43,11 +34,19 @@ const NoPokemon = () => {
           <Paper className={classes.paper} elevation={0}></Paper>
         </Grid>
         <Grid item xs={6}>
-        <Typography variant="h5"
-                  color="textSecondary"
-                  component="h5" 
-                  className={classes.text}>El pokemon que estas buscando no existe :(</Typography>
-        <img src="https://i.imgur.com/q8Y098s.jpg" alt="Missing no image" className={classes.image}></img>
+          <Typography
+            variant="h5"
+            color="textSecondary"
+            component="h5"
+            className={classes.text}
+          >
+            El pokemon que estas buscando no existe :(
+          </Typography>
+          <img
+            src="https://i.imgur.com/q8Y098s.jpg"
+            alt="Missing no image"
+            className={classes.image}
+          ></img>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper} elevation={0}></Paper>
