@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 } */
+
+
+/* .animation{
+  animation-name: aparece;
+  animation-duration: 3s;
+}
+
+@keyframes aparece{
+  0%{
+    transform: scale(.3)
+  }
+} */

@@ -1,4 +1,8 @@
 import React from "react";
+
+import "../App.css"
+import $ from "jquery";
+
 import { Grid, Paper, Button, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 

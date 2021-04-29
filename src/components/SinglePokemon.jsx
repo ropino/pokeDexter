@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
+import "../App.css";
+import $ from "jquery";
+
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Paper, Button, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,20 +15,22 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     textAlign: "left",
     borderColor: "none",
-    listStyle: "none"
+    listStyle: "none",
   },
   image: {
     //flexDirection: "column",
     //justifyContent: "center",
-    textAlign: "center",
+    textAlign: "right",
     //verticalAlign: "middle",
     //alignItems: "center",
     //alignContent: "center",
   },
   text: {
-    fontWeight: "lighter"
+    fontWeight: "lighter",
   },
 }));
+
+
 
 const SinglePokemon = (props) => {
   const pokemon = props.poke;
@@ -33,14 +39,26 @@ const SinglePokemon = (props) => {
   return (
     <div className={classes.root}>
       <Grid item xs={12}>
-      <Typography  variant="h2" component="h2" style={{textAlign: "center", textTransform: "capitalize", marginTop: 20}}>
-                  {pokemon.name}
-                </Typography>
+        <Typography
+          variant="h2"
+          component="h2"
+          style={{
+            textAlign: "center",
+            textTransform: "capitalize",
+            marginTop: 20,
+          }}
+        >
+          {pokemon.name}
+        </Typography>
         <Paper className={classes.paper} elevation={0}>
           <Grid container spacing={3}>
-            <Grid item xs={6} >
+            <Grid item xs={6}>
               <div className={classes.image}>
-                <img src={pokemon.img} alt="pokemon" style={{width: "250px", marginTop: 50}}/>
+                <img
+                  src={pokemon.img}
+                  alt="pokemon"
+                  style={{ width: "250px", marginTop: 50 }}
+                />
               </div>
             </Grid>
             <Grid item xs={6}>
@@ -51,35 +69,55 @@ const SinglePokemon = (props) => {
                   color="textSecondary"
                   component="h5"
                 >
-                  {pokemon.types.length <= 1 ? <span className={classes.text}>Tipo: </span> : <span className={classes.text}>Tipos: </span>}
-                  <ul>
-                    {pokemon.types?.map((type) => {
-                      return <li style={{listStyle: "none"}} key={type.type.name}>{type.type.name}</li>;
-                    })}
-                  </ul>
-                </Typography>
-                <Typography variant="h5" color="textSecondary" component="h5">
                   {pokemon.types.length <= 1 ? (
-                    <span className={classes.text}>Habilidades: </span>
+                    <span className={classes.text}>Tipo: </span>
                   ) : (
-                    <span className={classes.text}>Habilidad: </span>
+                    <span className={classes.text}>Tipos: </span>
                   )}
                   <ul>
-                    {pokemon.abilities?.map((data) => {
+                    {pokemon.types?.map((type) => {
                       return (
-                        <li key={data.ability.name} style={{listStyle: "none"}}>{data.ability.name}</li>
+                        <li style={{ listStyle: "none" }} key={type.type.name}>
+                          {type.type.name}
+                        </li>
                       );
                     })}
                   </ul>
                 </Typography>
-                <Typography variant="h5" color="textSecondary" component="h5" display="inline">
-                <span className={classes.text}>Experiencia basica: </span>{pokemon.baseExperience}
+                <Typography variant="h5" color="textSecondary" component="h5">
+                  {pokemon.abilities.length <= 1 ? (
+                    <span className={classes.text}>Habilidad: </span>
+                  ) : (
+                    <span className={classes.text}>Habilidades: </span>
+                  )}
+                  <ul>
+                    {pokemon.abilities?.map((data) => {
+                      return (
+                        <li
+                          key={data.ability.name}
+                          style={{ listStyle: "none" }}
+                        >
+                          {data.ability.name}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </Typography>
+                <Typography
+                  variant="h5"
+                  color="textSecondary"
+                  component="h5"
+                  display="inline"
+                >
+                  <span className={classes.text}>Experiencia base: </span>
+                  {pokemon.baseExperience}
                 </Typography>
                 <Typography variant="h5" color="textSecondary" component="h5">
-                <span className={classes.text}>Altura: </span> {pokemon.height}
+                  <span className={classes.text}>Altura: </span>{" "}
+                  {pokemon.height}
                 </Typography>
                 <Typography variant="h5" color="textSecondary" component="h5">
-                <span className={classes.text}>Peso: </span> {pokemon.weight}
+                  <span className={classes.text}>Peso: </span> {pokemon.weight}
                 </Typography>
               </Paper>
             </Grid>
